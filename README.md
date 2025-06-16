@@ -20,7 +20,7 @@ This is a complete hands-on project that lets you build a fully functional **Wik
 | `Train and Save the models.ipynb` | Full training pipeline: load articles, preprocess, build dictionary, BoW, TF-IDF, and create the similarity index. Saves all necessary models to disk. |
 | `Inference Notebook.ipynb`        | Run search queries and evaluate the index using pre-saved dictionary, TF-IDF model, and similarity index.                                              |
 | `app.py`                          | Flask backend that powers the live search. Loads the saved models and responds to frontend AJAX requests.                                              |
-| `script.js`                       | JavaScript logic to capture user input, fetch results from the backend, and dynamically update the page. Implements "Load More" functionality.         |
+| `script.js`                       | JavaScript logic to capture user input, fetch results from the backend, and dynamically update the page.          |
 | `index.html`                      | Frontend UI for the search engine, styled with Bootstrap. Includes search bar and result cards.                                                        |
 
 ---
@@ -34,24 +34,17 @@ Thanks! Here's the **final updated section** to include in your GitHub `README.m
 
 This project uses the **Simple English Wikipedia dataset** (\~200K articles) available from Hugging Face:
 
-📥 **Download the data here**:
+📥 **Download the data from this link**:
 👉 [https://huggingface.co/datasets/legacy-datasets/wikipedia/tree/main/data/20220301.simple](https://huggingface.co/datasets/legacy-datasets/wikipedia/tree/main/data/20220301.simple)
-
-**Recommended Format:**
-Download the file ending in `.json.gz` (e.g., `20220301.simple.json.gz`) and extract it.
 
 **How to load:**
 
 ```python
-from datasets import load_dataset
-dataset = load_dataset("legacy-datasets/wikipedia", "20220301.simple")
+import pandas as pd
+dataset = pd.read_parquet("<name.parquet>")
 ```
 
-You can then extract titles and text fields using:
-
-```python
-articles = [f"{item['title']}: {item['text']}" for item in dataset['train']]
-```
+You can the column called text from the abobe dataframe.
 
 ---
 
@@ -94,8 +87,6 @@ nltk.download('stopwords')
    ```
 
 3. Visit `http://127.0.0.1:5000` in your browser to use the search engine.
-
----
 
 ---
 
